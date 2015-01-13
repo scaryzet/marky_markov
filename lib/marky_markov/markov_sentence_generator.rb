@@ -49,7 +49,7 @@ class MarkovSentenceGenerator # :nodoc:
       attempts += 1
       words = @dictionary.dictionary.keys
       random_choice = words[rand(words.length)]
-      if random_choice[0] =~ /[A-Z]/
+      if random_choice[0] =~ /\p{Uppercase_Letter}/
         return random_choice
       end
     end
