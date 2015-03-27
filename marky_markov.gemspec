@@ -49,7 +49,7 @@ Gem::Specification.new do |s|
 
   ## List your runtime dependencies here. Runtime dependencies are those
   ## that are needed for an end user to actually USE your code.
-  s.add_dependency('msgpack')
+  # s.add_dependency('msgpack')
 
   ## List your development dependencies here. Development dependencies are
   ## those that are only needed during development
@@ -68,9 +68,8 @@ Gem::Specification.new do |s|
     lib/marky_markov/markov_sentence_generator.rb
     lib/marky_markov/persistent_dictionary.rb
     marky_markov.gemspec
-    spec/data/onetextdictcompare.mmd
     spec/data/test.txt
-    spec/data/textdictcompare.mmd
+    spec/data/textdictcompare.yml
     spec/marky_markov/marky_markov_spec.rb
     spec/spec_helper.rb
   ]

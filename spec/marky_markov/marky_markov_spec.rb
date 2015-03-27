@@ -30,13 +30,13 @@ describe MarkyMarkov do
     it "should generate the right number of sentences" do
       dictionary.parse_string "Hey man. How are you doing? Let's get pie!"
       sentence = dictionary.generate_5_sentences
-      sentence.should have(5).scan(/[.?!]/)
+      sentence.scan(/[.?!]/).size.should eq(5)
     end
 
     it "should create the right number of words" do
       dictionary.parse_string "Hey man. How are you doing? Let's get pie!"
       sentence = dictionary.generate_10_words
-      sentence.split.should have(10).words
+      sentence.split.size.should eq(10)
     end
 
     it "should not choke on parsing empty string" do
@@ -103,7 +103,7 @@ describe MarkyMarkov do
 
   context "PersistentDictionary" do
     let!(:dictionary) do |dict|
-      MarkyMarkov::Dictionary.new("spec/data/temptextdict").tap do |d|
+      MarkyMarkov::Dictionary.new("spec/data/temp_dict").tap do |d|
         d.parse_file "spec/data/test.txt"
       end
     end

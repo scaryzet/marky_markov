@@ -133,7 +133,7 @@ module MarkyMarkov
     # @param [Int] depth The depth of the dictionary. Defaults to 2.
     attr_reader :dictionarylocation
     def initialize(location, depth=2)
-      @dictionarylocation = "#{location}.mmd"
+      @dictionarylocation = "#{location}.yml"
       @dictionary = PersistentDictionary.new(@dictionarylocation, depth)
       @sentence = MarkovSentenceGenerator.new(@dictionary)
     end

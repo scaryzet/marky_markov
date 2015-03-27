@@ -1,4 +1,4 @@
-require 'msgpack'
+require 'yaml'
 require_relative 'markov_dictionary'
 
 # @private
@@ -32,7 +32,7 @@ class PersistentDictionary < MarkovDictionary # :nodoc:
     if File.exists?(@dictionarylocation)
       file = File.new(@dictionarylocation, 'rb').read
         @depth = file[0].to_i
-        @dictionary = MessagePack.unpack(file[1..-1])
+        @dictionary = YAML.load(file[1..-1])
     else
       @dictionary = {}
     end
@@ -41,7 +41,7 @@ class PersistentDictionary < MarkovDictionary # :nodoc:
   # Saves the PersistentDictionary objects @dictionary hash 
   # to disk in JSON format.
   def save_dictionary!
-    packed = @dictionary.to_msgpack
+    packed = @dictionary.to_yaml
     File.open(@dictionarylocation, 'wb') do |f|
       f.write @depth.to_s + packed
     end
