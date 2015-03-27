@@ -65,6 +65,13 @@ describe MarkyMarkov do
       end
     end
 
+    context "if the sentence contains unicode characters" do
+      it "should correctly detect the first word" do
+        dictionary.parse_string "Съешь ещё этих мягких французских булок."
+        dictionary.generate_4_sentences.should match(/\p{Uppercase_Letter}/)
+      end
+    end
+
     context "parsing web addresses" do
       it "should treat 'example.net' as single word" do
         dictionary.parse_string "i am at example.net now."
